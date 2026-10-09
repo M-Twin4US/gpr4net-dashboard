@@ -1,5 +1,12 @@
+# Install the CPU-only build of PyTorch. The free Streamlit Community Cloud
+# tier has no GPU and ~1 GB RAM, so pip's default CUDA build of torch (~2 GB,
+# bundling NVIDIA CUDA libraries) wastes memory and can make the app crash or
+# hang on wake. The CPU wheel is ~190 MB. With the extra index below, pip
+# resolves torch==2.6.0 to its "+cpu" wheel (the local-version build sorts
+# ahead of the CUDA build on PyPI). 2.6.0 has wheels for Python 3.9–3.13.
+--extra-index-url https://download.pytorch.org/whl/cpu
 streamlit>=1.31
-torch>=2.0
+torch==2.6.0
 numpy>=1.24
 scipy>=1.11
 matplotlib>=3.7
